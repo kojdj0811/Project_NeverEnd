@@ -9,7 +9,5 @@ public class WallTest : MonoBehaviour
         if ( other.transform.CompareTag(targetTag)) {
             Character.S.Life--; 
         }
-
-        Debug.Log(other.transform.tag);
     }
 }
