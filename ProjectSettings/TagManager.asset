@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Bird
   - Shield
+  - Heart
+  - Fruit
   layers:
   - Default
   - TransparentFX

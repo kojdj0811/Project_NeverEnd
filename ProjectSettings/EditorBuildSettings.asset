@@ -15,6 +15,11 @@ EditorBuildSettings:
     path: Assets/jdj/Scenes/CharacterTest.unity
     guid: 54f175528e80c96458d57b5d914d4a3b
   - enabled: 1
+    path: Assets/jdj/__Samples/AnimScene_01.unity
+    guid: 6847d07b8f10a374da5610adae01e0ea
+  - enabled: 1
+    path: Assets/jdj/__Samples/AnimScene_00.unity
+    guid: 674d647c3550be740a32e7f9a691b6d3
     path: Assets/ljh/Synopsis.unity
     guid: ea83e20e1292c2c41a5ce024f478e59e
   - enabled: 1

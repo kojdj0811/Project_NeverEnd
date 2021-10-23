@@ -870,9 +870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  sprite_up: {fileID: 21300000, guid: 6afc2ca78291dd544ae2a7fceec2fefe, type: 3}
+  sprite_down: {fileID: 21300000, guid: c0f0ea34dea9fe24f8d5aa13233a69f0, type: 3}
   rigid2D: {fileID: 2633027863565216977}
-  sprite: {fileID: 0}
   flyPower: 4
+  initFlyPower: 0
   lineLengthMulty: 2
   life: 99
   isMouseDown: 0
