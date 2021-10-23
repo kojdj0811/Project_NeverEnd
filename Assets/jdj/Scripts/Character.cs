@@ -283,7 +283,6 @@ public class Character : MonoBehaviour
         if(Coroutine_PowerModeOn != null)
             StopCoroutine(Coroutine_PowerModeOn);
         spriteRenderer.sprite = initSprite;
-        currentState = CharacterState.Flying;
 
         StartCoroutine (ReturnToStartPointAnimation());
     }
