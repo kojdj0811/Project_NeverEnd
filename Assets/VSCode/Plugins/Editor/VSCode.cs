@@ -845,7 +845,9 @@ namespace dotBunny.Unity
         /// <remarks>
         /// Contains all 3 toggles: Enable/Disable; Debug On/Off; Writing Launch File On/Off
         /// </remarks>
+#pragma warning disable 0618
         [PreferenceItem("VSCode")]
+#pragma warning restore 0618
         static void VSCodePreferencesItem()
         {
             if (EditorApplication.isCompiling)
