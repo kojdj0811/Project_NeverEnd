@@ -39,16 +39,22 @@ public class Option : MonoBehaviour
 
     }
 
-    public void fullscreen() // 천제화면 버튼을 눌렀을 때
+    public void fullscreen(bool ison) // 천제화면 버튼을 눌렀을 때
     {
-        Screen.fullScreen = true; // 전체화면
-        IsFullScreen = true;
+        if (ison)
+        {
+            Screen.fullScreen = true; // 전체화면
+            IsFullScreen = true;
+        }
     }
 
-    public void WindowScreen() // 창모드 버튼을 눌렀을 때
+    public void WindowScreen(bool ison) // 창모드 버튼을 눌렀을 때
     {
-        Screen.fullScreen = false; // 창모드
-        IsFullScreen = false;
+        if (ison)
+        {
+            Screen.fullScreen = false; // 창모드
+            IsFullScreen = false;
+        }
     }
 
     public void UpdateResolution()
