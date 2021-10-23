@@ -295,6 +295,8 @@ public class Character : MonoBehaviour
         transform.position = initPosition;
         transform.eulerAngles = initEularAngles;
 
+        MapSet_Manager.Instance.ShuffleMap();
+
         CurrentState = CharacterState.Sleep;
         shield.Life = 0;
     }

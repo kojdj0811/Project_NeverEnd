@@ -58,10 +58,4 @@ public class MapSet_Manager : MonoBehaviour
             tr_Map[map_idx[i]].transform.position = new Vector3((i + 1) * 35, 0);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
