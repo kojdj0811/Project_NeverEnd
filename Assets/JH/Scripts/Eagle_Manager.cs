@@ -32,6 +32,7 @@ public class Eagle_Manager : MonoBehaviour
         if(collision.gameObject.CompareTag("Bird"))
         {
             Character.S.Life--;
+            Character.S.CallBloodParticle(collision);
         }
     }
 
