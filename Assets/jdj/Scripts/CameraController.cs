@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [Range(0.0f, 1.0f)]
+    public float characterTrackingInterpolation;
     private Vector3 initPos;
 
 
@@ -11,10 +13,10 @@ public class CameraController : MonoBehaviour
         initPos = transform.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 pos = Character.S.transform.position;
         pos.z = initPos.z;
-        transform.position = pos;
+        transform.position = Vector3.Lerp(transform.position, pos, characterTrackingInterpolation);
     }
 }
