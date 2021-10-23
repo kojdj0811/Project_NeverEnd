@@ -26,7 +26,7 @@ public class Eagle_Manager : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bird"))
         {
-            Debug.Log("»õ Ãæµ¹");
+            Character.S.Life--;
         }
     }
 
