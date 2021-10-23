@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/ljh/Main.unity
+    guid: b70ca4f90f01fb64c9b191fe7f68b503
+  - enabled: 1
     path: Assets/JH/Scenes/BlockScene.unity
     guid: aab1bb9ea209b1e48ac2a7ab23a3d20f
   - enabled: 1
     path: Assets/jdj/Scenes/CharacterTest.unity
     guid: 54f175528e80c96458d57b5d914d4a3b
+  - enabled: 1
+    path: Assets/ljh/Synopsis.unity
+    guid: ea83e20e1292c2c41a5ce024f478e59e
+  - enabled: 1
+    path: Assets/ljh/UI TEST.unity
+    guid: 7e0703b737114184dabae7df5c39d0e1
   m_configObjects: {}
