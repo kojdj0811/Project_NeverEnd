@@ -61,8 +61,10 @@ public class Character : MonoBehaviour
         }
     }
 
+    public Sprite sprite_up;
+    public Sprite sprite_down;
+
     public Rigidbody2D rigid2D;
-    public Sprite sprite;
     public float flyPower = 10.0f;
     [HideInInspector]
     public float initFlyPower;
@@ -189,16 +191,19 @@ public class Character : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
             OnMouseButtonUp();
 
-        previousMousePosition = currentMousePosition;
+
+
+
+        if (CurrentState == CharacterState.Flying || CurrentState == CharacterState.Shield) {
+            spriteRenderer.sprite = rigid2D.velocity.y > 0.0f ? sprite_up : sprite_down;
+            Debug.Log(rigid2D.velocity.y > 0.0f);
+        }
 
 
 
 
 
-
-
-
-
+        // Keyboard Test
         if(Input.GetKeyDown(KeyCode.UpArrow)) {
             shield.Life++;
         }
@@ -209,10 +214,11 @@ public class Character : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) {
             CurrentState = CharacterState.PowerMode;
         }
+        //Test End
 
-        
 
 
+        previousMousePosition = currentMousePosition;
         previousPosition = transform.position;
     }
 
