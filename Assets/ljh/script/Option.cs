@@ -16,6 +16,10 @@ public class Option : MonoBehaviour
 
     public bool IsFullScreen;
 
+    public void DropDownTest(int index)
+    {
+
+    }
     public void OptionClick() // "Option" 버튼 클릭 시
     {
         OptionWindow.SetActive(true); // 설정창 보이기
@@ -47,9 +51,10 @@ public class Option : MonoBehaviour
         IsFullScreen = false;
     }
 
-    void Update()
+    public void UpdateResolution()
     {
-        switch (Resolution.value)
+        int index = Resolution.value + 1;
+        switch (index)
         {
             case 1:
                 Screen.SetResolution(1920, 1080, IsFullScreen);
