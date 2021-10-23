@@ -64,6 +64,8 @@ public class Character : MonoBehaviour
     public Rigidbody2D rigid2D;
     public Sprite sprite;
     public float flyPower = 10.0f;
+    [HideInInspector]
+    public float initFlyPower;
     public float lineLengthMulty = 2.0f;
 
     [SerializeField]
@@ -92,7 +94,7 @@ public class Character : MonoBehaviour
 
 
 
-    [HideInInspector]
+    [HideInInspector] 
     public bool isMouseDown;
     [HideInInspector]
     public Vector2 mouseDragBeginPosition;
@@ -139,6 +141,7 @@ public class Character : MonoBehaviour
         initPosition = transform.position;
         initEularAngles = transform.eulerAngles;
         initSprite = spriteRenderer.sprite;
+        initFlyPower = flyPower;
 
         childrenRigid2D = GetComponentsInChildren<Rigidbody2D>(true);
         joint2Ds = GetComponentsInChildren<FixedJoint2D>(true);
@@ -283,7 +286,6 @@ public class Character : MonoBehaviour
         if(Coroutine_PowerModeOn != null)
             StopCoroutine(Coroutine_PowerModeOn);
         spriteRenderer.sprite = initSprite;
-        currentState = CharacterState.Flying;
 
         StartCoroutine (ReturnToStartPointAnimation());
     }
@@ -295,6 +297,9 @@ public class Character : MonoBehaviour
 
         transform.position = initPosition;
         transform.eulerAngles = initEularAngles;
+
+        if(MapSet_Manager.Instance != null)
+            MapSet_Manager.Instance.ShuffleMap();
 
         CurrentState = CharacterState.Sleep;
         shield.Life = 0;

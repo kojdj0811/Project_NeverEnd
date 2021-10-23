@@ -138,6 +138,25 @@ namespace Expand_JH
 
         }
 
+        /// <summary>
+        /// 배열을 셔플 시켜주는 함수
+        /// </summary>
+        /// <param name="array">셔플할 배열</param>
+        public static void ShuffleArray(this int[] array)
+        {
+            int random0;
+            int random1;
+            int tmp;
+            for (int i = 0; i < array.Length; i++)
+            {
+                random0 = Random.Range(0, array.Length);
+                random1 = Random.Range(0, array.Length);
+
+                tmp = array[random0];
+                array[random0] = array[random1];
+                array[random1] = tmp;
+            }
+        }
 
         /// <summary>
         /// 포지션 이동

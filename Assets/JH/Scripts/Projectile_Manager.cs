@@ -4,6 +4,11 @@ using UnityEngine;
 using Expand_JH;
 public class Projectile_Manager : MonoBehaviour
 {
+    private static Projectile_Manager instance = null;
+
+
+
+
     public GameObject obj_Eagle;
     public GameObject obj_Leaf;
 
@@ -11,8 +16,32 @@ public class Projectile_Manager : MonoBehaviour
     float Progress; // ÁøÇàµµ
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         Target = transform.FindGameObjectByName("TargetPoint").transform;
     }
+
+    public static Projectile_Manager Instance
+    {
+        get
+        {
+            if(instance==null)
+            {
+                return null;
+            }
+            return instance;
+        }
+    }
+
     private void Start()
     {
         StartCoroutine(Go_Eagle());
