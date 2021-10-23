@@ -5,7 +5,8 @@ using Expand_JH;
 public class MapSet_Manager : MonoBehaviour
 {
     private static MapSet_Manager instance = null;
-
+    public GameObject back_mountain;
+    
     private void Awake()
     {
         if (instance == null)
@@ -49,6 +50,7 @@ public class MapSet_Manager : MonoBehaviour
     void Start()
     {
         ShuffleMap();
+        back_mountain.transform.SetParent(CameraController.S.mainCamera.transform);
     }
     public void ShuffleMap()
     {
