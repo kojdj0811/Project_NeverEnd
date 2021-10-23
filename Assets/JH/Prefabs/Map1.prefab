@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6779585192180019198}
   m_Layer: 0
   m_Name: pos (1)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 2418235334283781654}
   m_Layer: 0
   m_Name: Pos (1)
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184122771370842877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.71, y: 3.61, z: 0}
+  m_LocalPosition: {x: -5.46, y: 3.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2212227094842482424}
@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 2896747370254877032}
   m_Layer: 0
   m_Name: Pos
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,7 +678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 882371823039086906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.34, y: 4.79, z: 0}
+  m_LocalPosition: {x: -11.02, y: 5.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2212227094842482424}
@@ -969,7 +969,7 @@ GameObject:
   - component: {fileID: 2800388137545492800}
   m_Layer: 0
   m_Name: pos (5)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2838,7 +2838,7 @@ GameObject:
   - component: {fileID: 9173431579240669739}
   m_Layer: 0
   m_Name: pos (6)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3781,7 +3781,7 @@ GameObject:
   - component: {fileID: 5609887707439390039}
   m_Layer: 0
   m_Name: pos (9)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5003,7 +5003,7 @@ GameObject:
   - component: {fileID: 6269866075999345484}
   m_Layer: 0
   m_Name: pos (4)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6241,7 +6241,7 @@ GameObject:
   - component: {fileID: 7081589556702398135}
   m_Layer: 0
   m_Name: pos (7)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6847,7 +6847,7 @@ GameObject:
   - component: {fileID: 5428548796734890705}
   m_Layer: 0
   m_Name: Pos (2)
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6860,7 +6860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5840409379474073785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 5.64, z: 0}
+  m_LocalPosition: {x: 9.68, y: 5.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2212227094842482424}
@@ -8096,7 +8096,7 @@ GameObject:
   - component: {fileID: 527477365339999157}
   m_Layer: 0
   m_Name: pos (3)
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8126,7 +8126,7 @@ GameObject:
   - component: {fileID: 7456969038890713164}
   m_Layer: 0
   m_Name: pos
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
