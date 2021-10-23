@@ -8,6 +8,7 @@ public class WallTest : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if ( other.transform.CompareTag(targetTag)) {
             Character.S.Life--; 
+            Character.S.CallBloodParticle(other);
         }
     }
 }
