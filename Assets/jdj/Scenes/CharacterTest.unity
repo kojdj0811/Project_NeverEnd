@@ -235,5 +235,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestMap
       objectReference: {fileID: 0}
+    - target: {fileID: 6948745339341901598, guid: ba5c0afd0601e754e9e6d9e4b1de3975, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba5c0afd0601e754e9e6d9e4b1de3975, type: 3}

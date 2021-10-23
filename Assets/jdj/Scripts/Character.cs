@@ -44,6 +44,9 @@ public class Character : MonoBehaviour
                 }
 
                 case CharacterState.PowerMode : {
+                    if(Coroutine_PowerModeOn != null)
+                        StopCoroutine(Coroutine_PowerModeOn);
+                    Coroutine_PowerModeOn = StartCoroutine (PowerModeOn());
                     break;
                 }
 
@@ -59,6 +62,7 @@ public class Character : MonoBehaviour
     }
 
     public Rigidbody2D rigid2D;
+    public Sprite sprite;
     public float flyPower = 10.0f;
     public float lineLengthMulty = 2.0f;
 
@@ -68,12 +72,14 @@ public class Character : MonoBehaviour
         get => life;
         set {
             if(life > value) {
-                CurrentState = CharacterState.Die;
+                if (CurrentState != CharacterState.PowerMode) {
+                    CurrentState = CharacterState.Die;
+                    life = value;
+                }
             } else {
                 //nothing...
             }
 
-            life = value;
         }
     }
 
@@ -100,10 +106,23 @@ public class Character : MonoBehaviour
     public Vector2 deltaMousePosition;
 
     public Transform aimTrans;
+    public Shield shield;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] powerModeSprites;
+    public float powerModeFlashDelay = 0.2f;
+    public float powerModeDuration = 4.0f;
+    public GameObject bloodParticle;
+    private Transform particleGarbage;
+
 
 
     [HideInInspector]
     public Vector3 initPosition;
+
+    private Vector3 previousPosition;
+
+    private Sprite initSprite;
+
     [HideInInspector]
     public Vector3 initEularAngles;
 
@@ -112,11 +131,14 @@ public class Character : MonoBehaviour
     private Vector2[] initConnectedAnchors;
 
 
+    private Coroutine Coroutine_PowerModeOn;
+
 
     private void Awake() {
         S = this;
         initPosition = transform.position;
         initEularAngles = transform.eulerAngles;
+        initSprite = spriteRenderer.sprite;
 
         childrenRigid2D = GetComponentsInChildren<Rigidbody2D>(true);
         joint2Ds = GetComponentsInChildren<FixedJoint2D>(true);
@@ -133,6 +155,15 @@ public class Character : MonoBehaviour
 
 
         CurrentState = CharacterState.Sleep;
+
+
+        particleGarbage = new GameObject().transform;
+        particleGarbage.name = "particleGarbage";
+        particleGarbage.position = Vector3.zero;
+        particleGarbage.rotation = Quaternion.identity;
+        particleGarbage.localScale = Vector3.one;
+
+        shield.Life = 0;
     }
 
 
@@ -165,13 +196,21 @@ public class Character : MonoBehaviour
 
 
 
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            if(CameraController.S.CurrentCameraState == CameraState.ZoomIn) {
-                CameraController.S.CurrentCameraState = CameraState.ZoomOut;
-            } else {
-                CameraController.S.CurrentCameraState = CameraState.ZoomIn;
-            }
+        if(Input.GetKeyDown(KeyCode.UpArrow)) {
+            shield.Life++;
         }
+        if(Input.GetKeyDown(KeyCode.DownArrow)) {
+            shield.Life--;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            CurrentState = CharacterState.PowerMode;
+        }
+
+        
+
+
+        previousPosition = transform.position;
     }
 
 
@@ -197,17 +236,22 @@ public class Character : MonoBehaviour
             CurrentState = CharacterState.Flying;
 
 
+
+        if (CurrentState == CharacterState.Flying || CurrentState == CharacterState.PowerMode) {
+
+//=================
+//Direction
         float angleOffest = mouseDragBeginPosition.x > currentMousePosition.x ? 180.0f : 0.0f;
 
         if (mouseDragBeginPosition.x > currentMousePosition.x)
-            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
-        else
             transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        else
+            transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+//=================
 
 
 //==============
 //Move
-        if (CurrentState == CharacterState.Flying) {
             rigid2D.velocity = -(currentMousePosition - new Vector2 (aimTrans.position.x, aimTrans.position.y)) * flyPower;
             transform.localEulerAngles = Vector3.forward * (aimTrans.localEulerAngles.z + 90.0f + angleOffest);
 
@@ -235,6 +279,12 @@ public class Character : MonoBehaviour
 
     public void StartReturnToStartPointAnimation () {
         ActiveRigidbodys(false);
+
+        if(Coroutine_PowerModeOn != null)
+            StopCoroutine(Coroutine_PowerModeOn);
+        spriteRenderer.sprite = initSprite;
+        currentState = CharacterState.Flying;
+
         StartCoroutine (ReturnToStartPointAnimation());
     }
 
@@ -247,7 +297,32 @@ public class Character : MonoBehaviour
         transform.eulerAngles = initEularAngles;
 
         CurrentState = CharacterState.Sleep;
+        shield.Life = 0;
     }
+
+
+    IEnumerator PowerModeOn () {
+
+        for (int i = 0; i < childrenRigid2D.Length; i++)
+        {
+            childrenRigid2D[i].bodyType = RigidbodyType2D.Dynamic;
+        }
+
+
+
+        WaitForSeconds delay = new WaitForSeconds(powerModeFlashDelay);
+        float endTime = Time.timeSinceLevelLoad + powerModeDuration;
+
+        while (endTime > Time.timeSinceLevelLoad) {
+             spriteRenderer.sprite = powerModeSprites[Random.Range(0, 3)];
+            yield return delay;
+        }
+        spriteRenderer.sprite = initSprite;
+
+        currentState = CharacterState.Flying;
+    }
+
+
 
 
     public void ActiveRigidbodys (bool active) {
@@ -261,8 +336,17 @@ public class Character : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    public void CallBloodParticle (Collision2D other) {
+        if (CurrentState == CharacterState.PowerMode) return;
 
+        Transform particleTrans = Instantiate(bloodParticle).transform;
+        particleTrans.SetParent(particleGarbage);
+        particleTrans.forward = Vector2.Reflect((transform.position - previousPosition).normalized, other.contacts[0].normal);
+        particleTrans.position = other.contacts[0].point + new Vector2(particleTrans.forward.x, particleTrans.forward.y) * 0.2f;
     }
 
+
+    public void ActiveShield () {
+        shield.Life = shield.lifeMax;
+    }
 }
