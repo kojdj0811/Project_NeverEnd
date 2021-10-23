@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2779467268737893914}
   - component: {fileID: 5521560404956226909}
   - component: {fileID: 2779467268737893915}
+  - component: {fileID: 5590248737326326668}
   m_Layer: 0
   m_Name: Petal
   m_TagString: Untagged
@@ -112,8 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f958b09efaddb0642827548895ffacae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  spawnTime: 0
   spriteRenderer: {fileID: 0}
   collider: {fileID: 0}
   images:
@@ -121,3 +120,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ce6032ac209c2ff4da30be90d67f2622, type: 3}
   - {fileID: 21300000, guid: 139efae7f445d95478fc29e7508c6351, type: 3}
   - {fileID: 21300000, guid: 99c0547901670964b944d1529ccd33f5, type: 3}
+--- !u!95 &5590248737326326668
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779467268737893916}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ae92ed102b6704d4fb474e2cbecd1019, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

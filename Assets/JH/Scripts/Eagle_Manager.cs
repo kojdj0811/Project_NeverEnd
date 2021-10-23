@@ -24,6 +24,11 @@ public class Eagle_Manager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Character.S.shield.Life--;
+            transform.gameObject.SetActive(false);
+        }
         if(collision.gameObject.CompareTag("Bird"))
         {
             Character.S.Life--;
@@ -53,7 +58,7 @@ public class Eagle_Manager : MonoBehaviour
         }
 
 
-        yield return StartCoroutine(transform.MoveByAnimationCurve(tr_rot, curve_Move, Random.Range(15,20)));
+        yield return StartCoroutine(transform.MoveByAnimationCurve(tr_rot, curve_Move, Random.Range(10,15)));
 
         curve_Move.RemoveKey(1);
         curve_Move.RemoveKey(2);
