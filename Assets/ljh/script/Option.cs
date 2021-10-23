@@ -94,6 +94,7 @@ public class Option : MonoBehaviour
                 break;
             case 13:
                 Screen.SetResolution(1024, 768, IsFullScreen);
+                Debug.Log("13");
                 break;
         }
     }
