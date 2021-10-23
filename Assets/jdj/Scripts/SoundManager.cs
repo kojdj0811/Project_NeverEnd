@@ -19,14 +19,14 @@ public class SoundManager : MonoBehaviour
 
 
     public void PlaySound_ButtonMouseHover () {
-        Instantiate(mouseHoverSound);
+        Destroy(Instantiate(mouseHoverSound), 1.0f);
     }
 
     public void PlaySound_ButtonMouseDown () {
-        Instantiate(mouseClickSound);
+        Destroy(Instantiate(mouseClickSound), 1.0f);
     }
 
     public void PlaySound_ButtonMouseUp () {
-        Instantiate(mouseClickSound);
+        Destroy(Instantiate(mouseClickSound), 1.0f);
     }
 }
