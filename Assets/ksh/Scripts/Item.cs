@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public string name;
-    public float spawnTime;
+    // public string name;
+    // public float spawnTime;
 
     public SpriteRenderer spriteRenderer;
     public CapsuleCollider2D collider;
