@@ -24,7 +24,7 @@ public class Branch_Manager : MonoBehaviour
     // Start is called before the first frame update
     void fall()
     {
-        StartCoroutine(tr_branch.RectMove(2, -1, 0.5f, true));
+        //StartCoroutine(tr_branch.RectMove(2, -1, 0.5f, true));
         tr_branch.gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 }
