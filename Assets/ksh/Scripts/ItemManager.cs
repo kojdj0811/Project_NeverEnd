@@ -10,6 +10,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private GameObject fruitPrefab;
     [SerializeField] private GameObject petalPrefab;
 
+
     [SerializeField] private List<Transform> heartPoints = new List<Transform>();
     [SerializeField] private List<Transform> fruitPoints = new List<Transform>();
 
@@ -23,13 +24,17 @@ public class ItemManager : MonoBehaviour
     private int maxFruitCount = 3;
     public int fruitCount = 0;
 
-    private int maxPetalCount = 5;
+    private int maxPetalCount = 3;
     public int petalCount = 0;
 
     private float spawnTime = 3f;
     private float curTime = 0;
 
     private GameObject bird;
+
+    public List<GameObject> heartPool = new List<GameObject>();
+    public List<GameObject> petalPool = new List<GameObject>();
+    public List<GameObject> fruitPool = new List<GameObject>();
 
     void Start()
     {
@@ -92,9 +97,6 @@ public class ItemManager : MonoBehaviour
     public void SpawnPetal()
     {
         bird = GameObject.FindGameObjectWithTag("Bird");
-
-        Debug.Log(bird.transform.position.x);
-        Debug.Log(bird.transform.position.y);
 
         Vector3 pos = new Vector3(bird.transform.position.x + 10, bird.transform.position.y + 5, bird.transform.position.z);
         Instantiate(petalPrefab, pos, Quaternion.identity);
