@@ -10,4 +10,8 @@ public class SceneChangeTest : MonoBehaviour
     public void ChangeScene () {
         SceneManager.LoadScene(SceneName);
     }
+
+    public void LoadUiScene () {
+        SceneManager.LoadScene("UI TEST", LoadSceneMode.Additive);
+    }
 }

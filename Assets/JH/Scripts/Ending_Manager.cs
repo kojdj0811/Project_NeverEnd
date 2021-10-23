@@ -44,7 +44,7 @@ public class Ending_Manager : MonoBehaviour
 
         //Character.S.ActiveRigidbodys(false);
         Character.S.flyPower = 0f;
-        Character.S.CurrentState = CharacterState.Sleep;
+        Character.S.CurrentState = CharacterState.Finish;
 
 
         var alpha = cg_group.alpha;

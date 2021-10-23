@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 
@@ -76,6 +77,23 @@ public class CameraController : MonoBehaviour
 
         mainCamera = Camera.main;
         targetCameraOrthographicSize = mainCamera.orthographicSize;
+    }
+
+    private void Start() {
+        foreach(var cam in Camera.allCameras) {
+            if(cam != mainCamera)
+                Destroy(cam.gameObject);
+        }
+
+        var eventSystems = Object.FindObjectsOfType<EventSystem>();
+        if(eventSystems != null && eventSystems.Length > 1) {
+            for (int i = 0; i < eventSystems.Length; i++)
+            {
+                if (i != 0)
+                    Destroy(eventSystems[i].gameObject);
+            }
+        }
+
     }
 
     void FixedUpdate()
