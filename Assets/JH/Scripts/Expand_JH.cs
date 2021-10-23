@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace Expand_JH
@@ -156,6 +157,35 @@ namespace Expand_JH
                 array[random0] = array[random1];
                 array[random1] = tmp;
             }
+        }
+        public static IEnumerator SetAlphaText(this Text _text, float Alpha = 1f, float speed = 2f)
+        {
+            Color tmp = _text.color;
+
+            if (_text.color.a < Alpha)
+            {
+                while (_text.color.a + speed * Time.deltaTime < Alpha)
+                {
+                    tmp.a += speed * Time.deltaTime;
+                    _text.color = tmp;
+                    //_text.alpha += speed * Time.deltaTime;
+                    yield return null;
+                }
+                tmp.a = Alpha;
+                _text.color = tmp;
+            }
+            else
+            {
+                while (_text.color.a - speed * Time.deltaTime > Alpha)
+                {
+                    tmp.a -= speed * Time.deltaTime;
+                    _text.color -= tmp;
+                    yield return null;
+                }
+                tmp.a = Alpha;
+                _text.color = tmp;
+            }
+            yield return null;
         }
 
         /// <summary>
