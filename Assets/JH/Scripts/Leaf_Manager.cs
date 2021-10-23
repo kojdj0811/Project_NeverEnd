@@ -12,6 +12,11 @@ public class Leaf_Manager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Character.S.shield.Life--;
+            transform.gameObject.SetActive(false);
+        }
         if (collision.gameObject.CompareTag("Bird"))
         {
             Character.S.Life--;
@@ -25,7 +30,7 @@ public class Leaf_Manager : MonoBehaviour
     }
     IEnumerator Move_Leaf()
     {
-        yield return StartCoroutine(transform.RectMove(3, -20 , Random.Range(2.0f,3.0f), true));
+        yield return StartCoroutine(transform.RectMove(3, -20 , Random.Range(3.0f,4.0f), true));
         Destroy(transform.gameObject);
         yield break;
     }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    public static ItemManager S;
+
     [SerializeField] private GameObject heartPrefab;
     [SerializeField] private GameObject fruitPrefab;
+    [SerializeField] private GameObject petalPrefab;
 
     [SerializeField] private List<Transform> heartPoints = new List<Transform>();
     [SerializeField] private List<Transform> fruitPoints = new List<Transform>();
@@ -15,16 +18,23 @@ public class ItemManager : MonoBehaviour
     private GameObject[] pointsArr;
 
     private int maxHeartCount = 5;
-    private int heartCount = 0;
+    public int heartCount = 0;
 
     private int maxFruitCount = 3;
-    private int fruitCount = 0;
+    public int fruitCount = 0;
+
+    private int maxPetalCount = 5;
+    public int petalCount = 0;
 
     private float spawnTime = 3f;
     private float curTime = 0;
 
+    private GameObject bird;
+
     void Start()
     {
+        S = this;
+
         pointsArr = GameObject.FindGameObjectsWithTag("Heart");
         foreach(GameObject obj in pointsArr)
             heartPoints.Add(obj.transform);
@@ -35,6 +45,7 @@ public class ItemManager : MonoBehaviour
 
         Invoke("SpawnHeart", spawnTime);
         Invoke("SpawnFruit", spawnTime);
+        Invoke("SpawnPetal", spawnTime);
     }
 
     void Update()
@@ -48,6 +59,11 @@ public class ItemManager : MonoBehaviour
         else if(curTime > spawnTime && fruitCount < maxFruitCount)
         {
             Invoke("SpawnFruit", spawnTime);
+            curTime = 0;
+        }
+        else if(curTime > spawnTime && petalCount < maxPetalCount)
+        {
+            Invoke("SpawnPetal", spawnTime);
             curTime = 0;
         }
 
@@ -71,5 +87,20 @@ public class ItemManager : MonoBehaviour
 
         if(fruitCount < maxFruitCount)
             Invoke("SpawnFruit", spawnTime);
+    }
+
+    public void SpawnPetal()
+    {
+        bird = GameObject.FindGameObjectWithTag("Bird");
+
+        Debug.Log(bird.transform.position.x);
+        Debug.Log(bird.transform.position.y);
+
+        Vector3 pos = new Vector3(bird.transform.position.x + 10, bird.transform.position.y + 5, bird.transform.position.z);
+        Instantiate(petalPrefab, pos, Quaternion.identity);
+        petalCount++;
+
+        if(petalCount < maxPetalCount)
+            Invoke("SpawnPetal", spawnTime);
     }
 }
