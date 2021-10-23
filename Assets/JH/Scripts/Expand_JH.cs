@@ -107,16 +107,16 @@ namespace Expand_JH
             float degree;
             Vector3 originPos = transform.position;
             Vector3 vec_Target;
-            Quaternion LookAt = Quaternion.identity;
+
             while (curTime <= targetTime)
             {
                 float pos = curve.Evaluate(curTime);
                 
                 vec_Target = new Vector3(originPos.x-curTime, originPos.y + pos);
-                angle = Mathf.Atan2((vec_Target - originPos).x , (vec_Target-originPos).y);
+                angle = Mathf.Atan2((vec_Target.x - transform.position.x) , (vec_Target.y- transform.position.y));
                 degree = angle * Mathf.Rad2Deg;
                 transform.position = vec_Target;               
-                //tr_rot.rotation = Quaternion.Euler(0,0,degree);
+                //tr_rot.rotation = Quaternion.Euler(0,0,degree+90);
                 yield return null;
                 curTime += Time.deltaTime* speed;
             }
