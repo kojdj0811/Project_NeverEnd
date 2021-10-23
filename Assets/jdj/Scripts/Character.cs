@@ -11,6 +11,7 @@ public enum CharacterState
     Die,
     PowerMode,
     Shield,
+    Finish,
 }
 
 
@@ -54,6 +55,11 @@ public class Character : MonoBehaviour
                     break;
                 }
 
+                case CharacterState.Finish : {
+                    ActiveRigidbodys(false);
+                    break;
+                }
+
 
                 default:
                     break;
@@ -63,6 +69,10 @@ public class Character : MonoBehaviour
 
     public Sprite sprite_up;
     public Sprite sprite_down;
+
+    public GameObject birdDeadSound;
+    public GameObject birdResetSound;
+
 
     public Rigidbody2D rigid2D;
     public float flyPower = 10.0f;
@@ -229,7 +239,6 @@ public class Character : MonoBehaviour
             mouseDragBeginPosition = currentMousePosition;
 
             aimTrans.position = currentMousePosition;
-
     }
 
 
@@ -309,6 +318,7 @@ public class Character : MonoBehaviour
 
         CurrentState = CharacterState.Sleep;
         shield.Life = 0;
+        Destroy(Instantiate(birdResetSound), 1.0f);
     }
 
 
@@ -354,6 +364,11 @@ public class Character : MonoBehaviour
         particleTrans.SetParent(particleGarbage);
         particleTrans.forward = Vector2.Reflect((transform.position - previousPosition).normalized, other.contacts[0].normal);
         particleTrans.position = other.contacts[0].point + new Vector2(particleTrans.forward.x, particleTrans.forward.y) * 0.2f;
+        PlaySound_BirdDead();
+    }
+
+    public void PlaySound_BirdDead () {
+        Destroy(Instantiate(birdDeadSound), 1.0f);
     }
 
 
