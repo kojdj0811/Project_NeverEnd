@@ -12,4 +12,10 @@ public class Petal : Item
         spriteRenderer.sprite = images[Random.Range(0, images.Count)];
         Debug.Log(spriteRenderer.sprite.name);
     }
+
+    public override void Use()
+    {
+        Character.S.shield.Life = 2;
+        Destroy(this.gameObject);
+    }
 }
