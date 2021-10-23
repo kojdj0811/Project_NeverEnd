@@ -49,7 +49,8 @@ public class Projectile_Manager : MonoBehaviour
     }
     private void Update()
     {
-        Progress = (Character.S.transform.position.x / Target.position.x) * 100;            
+        if(Character.S != null)
+            Progress = (Character.S.transform.position.x / Target.position.x) * 100;            
     }
 
     public IEnumerator Go_Eagle()

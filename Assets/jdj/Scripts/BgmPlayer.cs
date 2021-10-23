@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class BgmPlayer : MonoBehaviour
 {
+    public static BgmPlayer S;
     private void Awake() {
-        DontDestroyOnLoad(gameObject);
+        if(S == null) {
+            S =this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
     }
 }
