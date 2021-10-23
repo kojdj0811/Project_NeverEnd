@@ -872,6 +872,8 @@ MonoBehaviour:
   currentState: 0
   sprite_up: {fileID: 21300000, guid: 6afc2ca78291dd544ae2a7fceec2fefe, type: 3}
   sprite_down: {fileID: 21300000, guid: c0f0ea34dea9fe24f8d5aa13233a69f0, type: 3}
+  birdDeadSound: {fileID: 7760026372650908577, guid: bc690fa965e2f1b46b139381302d245d, type: 3}
+  birdResetSound: {fileID: 7414993488499945477, guid: f0a7bd4b179b93044a4172872c77c8e2, type: 3}
   rigid2D: {fileID: 2633027863565216977}
   flyPower: 4
   initFlyPower: 0
