@@ -59,9 +59,4 @@ public class MapSet_Manager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
