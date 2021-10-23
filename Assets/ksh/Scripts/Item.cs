@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // public Sprite[] images;
     public string name;
     public float spawnTime;
 
@@ -16,4 +15,12 @@ public class Item : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<CapsuleCollider2D>();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Bird")
+            Use();
+    }
+
+    public virtual void Use() {}
 }
