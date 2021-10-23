@@ -10,8 +10,7 @@ public class Petal : Item
     void Start()
     {
         spriteRenderer.sprite = images[Random.Range(0, images.Count)];
-        Debug.Log(spriteRenderer.sprite.name);
-        Invoke("PetalDestroy", 6f);
+        Invoke("PetalDestroy", 5f);
     }
 
     public override void Use()

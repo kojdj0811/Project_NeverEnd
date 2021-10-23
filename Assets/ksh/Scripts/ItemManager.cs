@@ -93,9 +93,6 @@ public class ItemManager : MonoBehaviour
     {
         bird = GameObject.FindGameObjectWithTag("Bird");
 
-        Debug.Log(bird.transform.position.x);
-        Debug.Log(bird.transform.position.y);
-
         Vector3 pos = new Vector3(bird.transform.position.x + 10, bird.transform.position.y + 5, bird.transform.position.z);
         Instantiate(petalPrefab, pos, Quaternion.identity);
         petalCount++;
