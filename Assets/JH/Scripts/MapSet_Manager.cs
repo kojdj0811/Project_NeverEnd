@@ -13,7 +13,7 @@ public class MapSet_Manager : MonoBehaviour
         {
             instance = this;
 
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {

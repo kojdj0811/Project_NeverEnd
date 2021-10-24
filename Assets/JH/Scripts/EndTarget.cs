@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class EndTarget : MonoBehaviour
 {
-    bool isEnd = false;
+    
+    public static EndTarget instance = null;
+    public bool isEnd = false;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isEnd)
