@@ -45,8 +45,8 @@ public class Eagle_Manager : MonoBehaviour
 
             if (Character.S.CurrentState == CharacterState.Flying)
             {
-                Character.S.Life--;
                 Character.S.CallBloodParticle(collision);
+                Character.S.Life--;
             }
         }
     }
