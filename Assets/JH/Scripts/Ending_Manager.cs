@@ -106,10 +106,10 @@ public class Ending_Manager : MonoBehaviour
         {
             MapSet_Manager.Instance.ShuffleMap();
         }
-        // Character.S.CurrentState = CharacterState.Sleep;
+
         Character.S.shield.Life = 0;
         Character.S.Life = 99;
-        Character.S.CurrentState = CharacterState.Sleep;
+        Character.S.CurrentState = CharacterState.Finish;
         EndTarget.instance.isEnd = false;
         canvas.SetActive(false);
     }
