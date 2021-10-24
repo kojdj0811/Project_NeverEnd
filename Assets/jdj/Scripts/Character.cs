@@ -139,6 +139,8 @@ public class Character : MonoBehaviour
 
     [HideInInspector]
     public Vector3 initEularAngles;
+    [HideInInspector]
+    public Vector3 initLocalScale;
 
     private Rigidbody2D[] childrenRigid2D;
     private FixedJoint2D[] joint2Ds;
@@ -153,6 +155,7 @@ public class Character : MonoBehaviour
         initPosition = transform.position;
         initEularAngles = transform.eulerAngles;
         initSprite = spriteRenderer.sprite;
+        initLocalScale = transform.localScale;
         initFlyPower = flyPower;
 
         childrenRigid2D = GetComponentsInChildren<Rigidbody2D>(true);
@@ -282,6 +285,9 @@ public class Character : MonoBehaviour
         }
 //==============
 
+        if(CurrentState == CharacterState.Finish && transform.position == initPosition)
+            CurrentState = CharacterState.Sleep;
+
 
         aimTrans.gameObject.SetActive(false);
 
@@ -312,6 +318,8 @@ public class Character : MonoBehaviour
 
         transform.position = initPosition;
         transform.eulerAngles = initEularAngles;
+        transform.localScale = initLocalScale;
+
 
         if(MapSet_Manager.Instance != null)
             MapSet_Manager.Instance.ShuffleMap();

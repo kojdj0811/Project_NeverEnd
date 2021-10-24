@@ -97,13 +97,14 @@ public class Ending_Manager : MonoBehaviour
 
         Character.S.transform.position = Character.S.initPosition;
         Character.S.transform.eulerAngles = Character.S.initEularAngles;
+        Character.S.transform.localScale = Character.S.initLocalScale;
         Character.S.flyPower = Character.S.initFlyPower;
 
         if (MapSet_Manager.Instance!=null)
         {
             MapSet_Manager.Instance.ShuffleMap();
         }
-        Character.S.CurrentState = CharacterState.Sleep;
+        // Character.S.CurrentState = CharacterState.Sleep;
         Character.S.shield.Life = 0;
         Character.S.Life = 99;
         EndTarget.instance.isEnd = false;

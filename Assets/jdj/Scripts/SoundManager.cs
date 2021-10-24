@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager S;
-
 
     public GameObject mouseHoverSound;
     public GameObject mouseClickSound;
 
 
-
-
-    private void Awake() {
-        S = this;
-    }
 
 
     public void PlaySound_ButtonMouseHover () {
