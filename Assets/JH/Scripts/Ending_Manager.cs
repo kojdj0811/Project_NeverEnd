@@ -48,8 +48,7 @@ public class Ending_Manager : MonoBehaviour
     }
     public void GameFinish()
     {
-        EndTime = Time.timeSinceLevelLoad;
-        
+        EndTime = Time.timeSinceLevelLoad;      
         playtime = EndTime - StartTime;
         StartCoroutine(cg_on());
     }
@@ -58,8 +57,8 @@ public class Ending_Manager : MonoBehaviour
     {
         int m_time = (int)(playtime / 60);
         int s_time = (int)playtime - (m_time * 60);
-        text_playTime.text = "ÇÃ·¹ÀÌ ½Ã°£:" + m_time + "ºÐ " + s_time + "ÃÊ";
-        text_life.text = ": " + Character.S.Life + " °³";
+        text_playTime.text = "PlayTime: " + m_time + "m " + s_time+"s";
+        text_life.text = ": " + Character.S.Life + "";
 
         //Character.S.ActiveRigidbodys(false);
         Character.S.flyPower = 0f;
