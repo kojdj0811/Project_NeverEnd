@@ -21,6 +21,17 @@ public class Eagle_Manager : MonoBehaviour
     {
         Go_Eagle();
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Debug.Log("½Çµå");
+
+            Character.S.shield.Life--;
+            transform.gameObject.SetActive(false);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

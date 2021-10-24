@@ -9,7 +9,14 @@ public class Leaf_Manager : MonoBehaviour
     {
         Go_Leaf();
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Character.S.shield.Life--;
+            transform.gameObject.SetActive(false);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Shield"))
