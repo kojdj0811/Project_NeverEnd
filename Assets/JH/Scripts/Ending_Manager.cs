@@ -58,18 +58,20 @@ public class Ending_Manager : MonoBehaviour
     {
         int m_time = (int)(playtime / 60);
         int s_time = (int)playtime - (m_time * 60);
-        text_playTime.text = "ÇÃ·¹ÀÌ ½Ã°£:" + m_time + "ºĞ " + s_time + "ÃÊ";
-        text_life.text = ": " + Character.S.Life + " °³";
+        text_playTime.text = "Ã‡ÃƒÂ·Â¹Ã€ÃŒ Â½ÃƒÂ°Â£:" + m_time + "ÂºÃ " + s_time + "ÃƒÃŠ";
+        text_life.text = ": " + Character.S.Life + " Â°Â³";
 
         //Character.S.ActiveRigidbodys(false);
         Character.S.flyPower = 0f;
         Character.S.CurrentState = CharacterState.Finish;
+
         Color color_tmp = new Color(1, 1, 1, 0);
         text_playTime.color = color_tmp;
         text_life.color = color_tmp;
         //mg_life.color = color_tmp;
         text_msg0.color = color_tmp;
         text_msg1.color = color_tmp;
+
 
         var alpha = cg_group.alpha;
         while (alpha <= 1f)
