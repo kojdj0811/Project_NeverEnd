@@ -31,11 +31,13 @@ public class Character : MonoBehaviour
             {
                 case CharacterState.Sleep : {
                     ActiveRigidbodys(false);
+                    ActiveColliders(false);
                     break;
                 }
 
                 case CharacterState.Flying : {
                     ActiveRigidbodys(true);
+                    ActiveColliders(true);
                     break;
                 }
 
@@ -57,6 +59,7 @@ public class Character : MonoBehaviour
 
                 case CharacterState.Finish : {
                     ActiveRigidbodys(false);
+                    ActiveColliders(false);
                     break;
                 }
 
@@ -86,12 +89,12 @@ public class Character : MonoBehaviour
         get => life;
         set {
             if(life > value) {
-                if (CurrentState != CharacterState.PowerMode) {
+                if (CurrentState != CharacterState.PowerMode && CurrentState != CharacterState.Die) {
                     CurrentState = CharacterState.Die;
                     life = value;
                 }
             } else {
-                //nothing...
+                life = value;
             }
 
         }
@@ -143,6 +146,7 @@ public class Character : MonoBehaviour
     public Vector3 initLocalScale;
 
     private Rigidbody2D[] childrenRigid2D;
+    private Collider[] childrenCollider;
     private FixedJoint2D[] joint2Ds;
     private Vector2[] initConnectedAnchors;
 
@@ -159,6 +163,7 @@ public class Character : MonoBehaviour
         initFlyPower = flyPower;
 
         childrenRigid2D = GetComponentsInChildren<Rigidbody2D>(true);
+        childrenCollider = GetComponentsInChildren<Collider>(true);
         joint2Ds = GetComponentsInChildren<FixedJoint2D>(true);
         initConnectedAnchors = new Vector2[joint2Ds.Length];
 
@@ -172,6 +177,7 @@ public class Character : MonoBehaviour
 
 
 
+        shield.Life = 0;
         CurrentState = CharacterState.Sleep;
 
 
@@ -181,7 +187,6 @@ public class Character : MonoBehaviour
         particleGarbage.rotation = Quaternion.identity;
         particleGarbage.localScale = Vector3.one;
 
-        shield.Life = 0;
     }
 
 
@@ -209,7 +214,6 @@ public class Character : MonoBehaviour
 
         if (CurrentState == CharacterState.Flying || CurrentState == CharacterState.Shield) {
             spriteRenderer.sprite = rigid2D.velocity.y > 0.0f ? sprite_up : sprite_down;
-            Debug.Log(rigid2D.velocity.y > 0.0f);
         }
 
 
@@ -258,7 +262,7 @@ public class Character : MonoBehaviour
 
 
 
-        if (CurrentState == CharacterState.Flying || CurrentState == CharacterState.PowerMode) {
+        if (CurrentState == CharacterState.Flying || CurrentState == CharacterState.PowerMode || CurrentState == CharacterState.Shield) {
 
 //=================
 //Direction
@@ -303,6 +307,7 @@ public class Character : MonoBehaviour
 
     public void StartReturnToStartPointAnimation () {
         ActiveRigidbodys(false);
+        ActiveColliders(false);
 
         if(Coroutine_PowerModeOn != null)
             StopCoroutine(Coroutine_PowerModeOn);
@@ -324,8 +329,8 @@ public class Character : MonoBehaviour
         if(MapSet_Manager.Instance != null)
             MapSet_Manager.Instance.ShuffleMap();
 
-        CurrentState = CharacterState.Sleep;
         shield.Life = 0;
+        CurrentState = CharacterState.Sleep;
         Destroy(Instantiate(birdResetSound), 1.0f);
     }
 
@@ -362,11 +367,16 @@ public class Character : MonoBehaviour
             childrenRigid2D[i].angularVelocity = 0.0f;
         }
     }
-
+    public void ActiveColliders (bool active) {
+        for (int i = 0; i < childrenCollider.Length; i++)
+        {
+            childrenCollider[i].enabled = active;
+        }
+    }
 
 
     public void CallBloodParticle (Collision2D other) {
-        if (CurrentState == CharacterState.PowerMode) return;
+        if (CurrentState == CharacterState.PowerMode || CurrentState == CharacterState.Die) return;
 
         Transform particleTrans = Instantiate(bloodParticle).transform;
         particleTrans.SetParent(particleGarbage);

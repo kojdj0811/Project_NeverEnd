@@ -19,8 +19,8 @@ public class Leaf_Manager : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Bird"))
         {
-            Character.S.Life--;
             Character.S.CallBloodParticle(collision);
+            Character.S.Life--;
         }
     }
 

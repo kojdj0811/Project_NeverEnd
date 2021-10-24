@@ -11,7 +11,17 @@ public class Shield : MonoBehaviour
         get => life;
         set {
             life = value;
+            if(life > lifeMax)
+                life = lifeMax;
+            if(life < 0)
+                life = 0;
+
             gameObject.SetActive(life > 0);
+
+            if(life > 0)
+                Character.S.CurrentState = CharacterState.Shield;
+            else
+                Character.S.CurrentState = CharacterState.Flying;
         }
     }
     

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2031574867965893271}
   m_Layer: 8
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -991,7 +991,7 @@ GameObject:
   - component: {fileID: 2633027863740979983}
   m_Layer: 8
   m_Name: _bird_blue
-  m_TagString: Untagged
+  m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
