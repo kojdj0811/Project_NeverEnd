@@ -29,10 +29,13 @@ public class Eagle_Manager : MonoBehaviour
             Character.S.shield.Life--;
             transform.gameObject.SetActive(false);
         }
-        if(collision.gameObject.CompareTag("Bird"))
+        if (collision.gameObject.CompareTag("Bird"))
         {
-            Character.S.Life--;
-            Character.S.CallBloodParticle(collision);
+            if (Character.S.CurrentState == CharacterState.Flying)
+            {
+                Character.S.Life--;
+                Character.S.CallBloodParticle(collision);
+            }
         }
     }
 
