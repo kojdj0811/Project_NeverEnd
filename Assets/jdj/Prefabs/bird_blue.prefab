@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1216110102}
   - component: {fileID: 1216110103}
   - component: {fileID: 1216110104}
-  - component: {fileID: 2031574867965893271}
+  - component: {fileID: 1449829741501540561}
   m_Layer: 8
   m_Name: Shield
   m_TagString: Shield
@@ -121,8 +121,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &2031574867965893271
-PolygonCollider2D:
+--- !u!58 &1449829741501540561
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,49 +131,12 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.7835035, y: 1.2069999}
-    newSize: {x: 10.24, y: 10.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.1735358, y: 0.56216204}
-      - {x: -0.33106062, y: 0.53075594}
-      - {x: -0.49864852, y: 0.47068608}
-      - {x: -0.61684924, y: 0.40349317}
-      - {x: -0.76868236, y: 0.2610466}
-      - {x: -0.8389455, y: 0.12351765}
-      - {x: -0.85492915, y: 0.00031155348}
-      - {x: -0.82738847, y: -0.14290018}
-      - {x: -0.76390207, y: -0.27253443}
-      - {x: -0.61239755, y: -0.4095299}
-      - {x: -0.49516284, y: -0.48395422}
-      - {x: -0.32563418, y: -0.53277874}
-      - {x: -0.15476143, y: -0.56847805}
-      - {x: 0.00021409057, y: -0.5734453}
-      - {x: 0.16591984, y: -0.56706446}
-      - {x: 0.35418957, y: -0.5266915}
-      - {x: 0.52682185, y: -0.4549881}
-      - {x: 0.628848, y: -0.39040014}
-      - {x: 0.7427938, y: -0.28215516}
-      - {x: 0.81880724, y: -0.16321255}
-      - {x: 0.8519063, y: -0.00042118505}
-      - {x: 0.81362975, y: 0.18477385}
-      - {x: 0.73204523, y: 0.30589065}
-      - {x: 0.622132, y: 0.4105097}
-      - {x: 0.4661825, y: 0.4937965}
-      - {x: 0.335967, y: 0.53570163}
-      - {x: 0.18665048, y: 0.567018}
-      - {x: -0.0020195358, y: 0.5759066}
+  serializedVersion: 2
+  m_Radius: 0.66
 --- !u!1 &1544810552
 GameObject:
   m_ObjectHideFlags: 0

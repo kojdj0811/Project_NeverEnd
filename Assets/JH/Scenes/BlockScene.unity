@@ -1435,6 +1435,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1449829741501540561, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2031574867965893271, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2031574867965893271, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2633027863565216978, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1483,7 +1495,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: bird_blue
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1216110104, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
+    - {fileID: 2031574867965893271, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9f496d914d5e984c934a1b5fd898253, type: 3}
 --- !u!1 &1123213181
 GameObject:

@@ -33,8 +33,4 @@ public class Shield : MonoBehaviour
                 Character.S.CurrentState = CharacterState.Flying;
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("dddddd");
-    }
 }
