@@ -10,13 +10,14 @@ public class Petal : Item
     void Start()
     {
         spriteRenderer.sprite = images[Random.Range(0, images.Count)];
-        Debug.Log(spriteRenderer.sprite.name);
-        Invoke("PetalDestroy", 6f);
+        Invoke("PetalDestroy", 10f);
     }
 
     public override void Use()
     {
-        Character.S.shield.Life = 2;
+        Character.S.shield.Life++;
+        Character.S.shield.Life++;
+        
         ItemManager.S.petalCount--;
         Destroy(this.gameObject);
     }

@@ -6,9 +6,6 @@ public class Projectile_Manager : MonoBehaviour
 {
     private static Projectile_Manager instance = null;
 
-
-
-
     public GameObject obj_Eagle;
     public GameObject obj_Leaf;
 
@@ -20,7 +17,7 @@ public class Projectile_Manager : MonoBehaviour
         {
             instance = this;
 
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -49,7 +46,8 @@ public class Projectile_Manager : MonoBehaviour
     }
     private void Update()
     {
-        Progress = (Character.S.transform.position.x / Target.position.x) * 100;            
+        if(Character.S != null)
+            Progress = (Character.S.transform.position.x / Target.position.x) * 100;            
     }
 
     public IEnumerator Go_Eagle()

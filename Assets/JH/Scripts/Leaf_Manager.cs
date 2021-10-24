@@ -19,7 +19,11 @@ public class Leaf_Manager : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Bird"))
         {
-            Character.S.Life--;
+            if (Character.S.CurrentState == CharacterState.Flying)
+            {
+                Character.S.Life--;
+                Character.S.CallBloodParticle(collision);
+            }
         }
     }
 

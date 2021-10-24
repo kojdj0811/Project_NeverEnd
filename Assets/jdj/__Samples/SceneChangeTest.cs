@@ -7,9 +7,11 @@ public class SceneChangeTest : MonoBehaviour
 {
     public string SceneName;
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-            SceneManager.LoadScene(SceneName);
+    public void ChangeScene () {
+        SceneManager.LoadScene(SceneName);
+    }
+
+    public void LoadUiScene () {
+        SceneManager.LoadScene("UI TEST", LoadSceneMode.Additive);
     }
 }

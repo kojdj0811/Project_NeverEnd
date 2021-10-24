@@ -5,6 +5,7 @@ using Expand_JH;
 public class Web_Manager : MonoBehaviour
 {
     public static Web_Manager instance;
+    bool Slowing = false;
     Spider_web[] Webs;
     private void Awake()
     {
@@ -25,13 +26,37 @@ public class Web_Manager : MonoBehaviour
         }
     }
 
-
+    Vector2 OriginVelocity;
     class Spider_web : MonoBehaviour
     {
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("∞≈πÃ¡Ÿ");
-            gameObject.SetActive(false);
+            if (collision.CompareTag("Bird"))
+            {
+                if (!instance.Slowing)
+                {
+                    instance.Slowing = true;
+                    Character.S.flyPower *= 0.4f;
+                    instance.OriginVelocity = Character.S.rigid2D.velocity;
+                    Character.S.rigid2D.velocity *= 0.4f;
+                    Character.S.spriteRenderer.color = Color.gray;
+                }
+
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Bird"))
+            {
+                if (instance.Slowing)
+                {
+                    instance.Slowing = false;
+                    Character.S.flyPower = Character.S.initFlyPower;
+                    Character.S.rigid2D.velocity = instance.OriginVelocity;
+                    Character.S.spriteRenderer.color = Color.white;
+                }
+
+            }
         }
     }
 }
