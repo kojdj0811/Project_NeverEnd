@@ -19,6 +19,7 @@ public class Leaf_Manager : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Bird"))
         {
+
             if (Character.S.CurrentState == CharacterState.Flying)
             {
                 Character.S.Life--;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2031574867965893271}
   m_Layer: 8
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2536f6bdd59294d489aa292d331b219d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectSound: {fileID: 7760026372650908577, guid: bc690fa965e2f1b46b139381302d245d, type: 3}
   lifeMax: 2
   life: 0
 --- !u!50 &1216110104
@@ -185,6 +186,8 @@ GameObject:
   - component: {fileID: 1544810554}
   - component: {fileID: 1544810553}
   - component: {fileID: 1544810556}
+  - component: {fileID: 1732910269}
+  - component: {fileID: 1732910270}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -275,6 +278,83 @@ MonoBehaviour:
   zoomInOrthographicSize: 1
   zoomOutOrthographicSize: 5
   mainCamera: {fileID: 0}
+--- !u!114 &1732910269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544810552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1544810555}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &1732910270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544810552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 7fa799f1c0f09e947ada4f7ccfd68789, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &2633027862710913096
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +977,7 @@ MonoBehaviour:
   bloodParticle: {fileID: 9207252899645807020, guid: 7f0ff2b774ef680438b72f1565822534, type: 3}
   initPosition: {x: 0, y: 0, z: 0}
   initEularAngles: {x: 0, y: 0, z: 0}
+  initLocalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &2633027863740979982
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +992,7 @@ GameObject:
   - component: {fileID: 2633027863740979983}
   m_Layer: 8
   m_Name: _bird_blue
-  m_TagString: Untagged
+  m_TagString: Bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
