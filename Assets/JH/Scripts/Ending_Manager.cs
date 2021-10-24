@@ -7,6 +7,7 @@ using Expand_JH;
 
 public class Ending_Manager : MonoBehaviour
 {
+    public GameObject canvas;
     public static Ending_Manager instance;
     CanvasGroup cg_group;
     Text text_playTime;
@@ -45,9 +46,11 @@ public class Ending_Manager : MonoBehaviour
     void Start()
     {
         StartTime = Time.timeSinceLevelLoad;
+        canvas.SetActive(false);
     }
     public void GameFinish()
     {
+        canvas.SetActive(true);
         EndTime = Time.timeSinceLevelLoad;      
         playtime = EndTime - StartTime;
         StartCoroutine(cg_on());
@@ -106,7 +109,9 @@ public class Ending_Manager : MonoBehaviour
         // Character.S.CurrentState = CharacterState.Sleep;
         Character.S.shield.Life = 0;
         Character.S.Life = 99;
+        Character.S.CurrentState = CharacterState.Sleep;
         EndTarget.instance.isEnd = false;
+        canvas.SetActive(false);
     }
     
 

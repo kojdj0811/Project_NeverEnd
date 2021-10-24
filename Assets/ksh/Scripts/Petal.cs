@@ -15,8 +15,7 @@ public class Petal : Item
 
     public override void Use()
     {
-        Character.S.shield.Life++;
-        Character.S.shield.Life++;
+        Character.S.ActiveShield();
         
         ItemManager.S.petalCount--;
         Destroy(this.gameObject);
