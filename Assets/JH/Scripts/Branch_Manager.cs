@@ -56,8 +56,8 @@ public class Branch_Manager : MonoBehaviour
     class branch_Trigger : MonoBehaviour
     {
         Transform tr_branch;
-        Vector3 origin_pos;
-        Vector2 origin_rot;
+        public Vector3 origin_pos;
+        public Vector2 origin_rot;
         bool TriggerOn = false;
         private void Awake()
         {
