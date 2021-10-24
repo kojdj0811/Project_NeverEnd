@@ -75,7 +75,7 @@ public class Projectile_Manager : MonoBehaviour
             {
                 waitTime = Random.Range(6, 8);
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(waitTime);
             Instantiate(obj_Eagle, Character.S.transform.position + new Vector3(10, Random.Range(-3, 3)), Quaternion.identity, transform);
 
         }
@@ -106,7 +106,7 @@ public class Projectile_Manager : MonoBehaviour
             {
                 waitTime = 6;
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(waitTime);
             Instantiate(obj_Leaf, Character.S.transform.position + new Vector3(10, Random.Range(-3, 3)), Quaternion.identity, transform);
         }
     }
